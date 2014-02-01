@@ -52,18 +52,18 @@ date_default_timezone_set('Europe/Madrid');
 	
 function mostrarTweets(
 	// Parámetros
-	$screen_name,													// Nombre de usuario (Ej: nombre_2013). Pasar por parámetro
-	$archivo_cache			= './tweets.txt',  						// Archivo para cache. (Por defecto: en el dir actual)
-	$tweets_a_mostrar		= 6,               						// Nº tweets a mostrar
-	$ignorar_respuestas		= false,           						// No incluir tweets de respuestra (Los que empiezan por @usuario)
-	$incluir_rts			= true,           						// Incluir RTs
-	$mostrar_nombre			= true,									// Mostrar nombre
-	$mostrar_usuario		= true,									// Mostrar usuario
-	$mostrar_fecha			= true,									// Mostrar fecha
-	$mostrar_nRTs			= true,									// Mostrar número de retweets	
-	$mostrar_nFav			= true,									// Mostrar número de favoritos
-	$formato_fecha			= 'd/m/y', 								// Formato fecha (http://php.net/manual/en/function.date.php)	
-	$fecha_estilo_twitter	= true,           						// Fecha estilo Twitter (Ej: hace 1h) (para tweets de hace <24h)	
+	$screen_name,						// Nombre de usuario (Ej: nombre_2013). Pasar por parámetro
+	$archivo_cache			= './tweets.txt'	// Archivo para cache. (Por defecto: en el dir actual)
+	$tweets_a_mostrar		= 6,			// Nº tweets a mostrar
+	$ignorar_respuestas		= false,		// No incluir tweets de respuestra (Los que empiezan por @usuario)
+	$incluir_rts			= true,			// Incluir RTs
+	$mostrar_nombre			= true,			// Mostrar nombre
+	$mostrar_usuario		= true,			// Mostrar usuario
+	$mostrar_fecha			= true,			// Mostrar fecha
+	$mostrar_nRTs			= true,			// Mostrar número de retweets	
+	$mostrar_nFav			= true,			// Mostrar número de favoritos
+	$formato_fecha			= 'd/m/y', 		// Formato fecha (http://php.net/manual/en/function.date.php)	
+	$fecha_estilo_twitter	= true,           		// Fecha estilo Twitter (Ej: hace 1h) (para tweets de hace <24h)	
 	// HTML
 	$tweet_open    			= '<article>',							// Contenedor tweet
 	$tweet_close  			= '</article>',							// Contenedor tweet cierre
@@ -71,26 +71,26 @@ function mostrarTweets(
 	$tweet_header_close		= '</header>',							// Contenedor tweet cierre	
 	$nombre_open			= '<span class="nombre"><i class="fa fa-caret-right"></i> ',	// Contenedor nombre
 	$nombre_close     		= '</span>',							// Contenedor nombre cierre	
-	$usuario_open			= '<span class="usuario">· @',			// Contenedor usuario
+	$usuario_open			= '<span class="usuario">· @',					// Contenedor usuario
 	$usuario_close     		= '</span>',							// Contenedor usuario cierre
-	$fecha_open       		= '<time datetime="',					// Contenedor fecha
-	$fecha_mid       		= '"><i class="fa fa-clock-o"></i> ',	// Contenedor fecha	intermedio
+	$fecha_open       		= '<time datetime="',						// Contenedor fecha
+	$fecha_mid       		= '"><i class="fa fa-clock-o"></i> ',				// Contenedor fecha intermedio
 	$fecha_close      		= '</time>',							// Contenedor fecha cierre	
-	$tweet_retweeted		= '<i class="fa fa-retweet"></i>',		// Símbolo de tweet retweeted
-	$nRTs_open				= '<i class="fa fa-retweet nRTs">',		// Contenedor número de retweets
-	$nRTs_close     		= '</i>',								// Contenedor número de retweets cierre
-	$nFav_open				= '<i class="fa fa-star nFav">',		// Contenedor número de favoritos
-	$nFav_close     		= '</i>',								// Contenedor número de favoritos cierre	
-	$tweet_text_open		= '<p>',								// Contenedor texto tweet
-	$tweet_text_close		= '</p>'){								// Contenedor texto tweet cierre
+	$tweet_retweeted		= '<i class="fa fa-retweet"></i>',				// Símbolo de tweet retweeted
+	$nRTs_open				= '<i class="fa fa-retweet nRTs">',			// Contenedor número de retweets
+	$nRTs_close     		= '</i>',							// Contenedor número de retweets cierre
+	$nFav_open				= '<i class="fa fa-star nFav">',			// Contenedor número de favoritos
+	$nFav_close     		= '</i>',							// Contenedor número de favoritos cierre	
+	$tweet_text_open		= '<p>',							// Contenedor texto tweet
+	$tweet_text_close		= '</p>'){							// Contenedor texto tweet cierre
 
 	// Claves para autentificación (https://dev.twitter.com/)
-$settings = array(
-	'consumer_key' 				=> "xxxxxxxxxxxxxxxxxxxx",
-	'consumer_secret' 			=> "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-	'oauth_access_token' 		=> "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-	'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-);
+	$settings = array(
+		'consumer_key'			=> "xxxxxxxxxxxxxxxxxxxx",
+		'consumer_secret'		=> "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+		'oauth_access_token'		=> "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+		'oauth_access_token_secret'	=> "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	);
 
 	// Periodo de cache
 	$periodo_cache = 60*3;
@@ -141,22 +141,22 @@ $settings = array(
 				$tweet_count++;
 				
 				// Saber si es retweeted
-				$rt = ($tweet['retweeted_status'] == null) ? false : true;
+				$rt = array_key_exists('retweeted_status', $tweet);
 				
 				if($rt){
 					// Si es retweeted
-					$nombre = $tweet['retweeted_status']['user']['name'];			// Nombre
+					$nombre = $tweet['retweeted_status']['user']['name'];		// Nombre
 					$usuario = $tweet['retweeted_status']['user']['screen_name'];	// Usuario
 					$fecha = strtotime($tweet['retweeted_status']['created_at']);	// Fecha
-					$tweet_text = $tweet['retweeted_status']['text'];				// Texto
+					$tweet_text = $tweet['retweeted_status']['text'];		// Texto
 				}else{
 					// Si es propio
-					$nombre = $tweet['user']['name'];								// Nombre 
-					$usuario = $tweet['user']['screen_name'];						// Usuario
-					$fecha = strtotime($tweet['created_at']);						// Fecha
-					$tweet_text = $tweet['text'];									// Texto
-					$nRTs = $tweet['retweet_count'];									// Nº RTs					
-					$nFav = $tweet['favorite_count'];								// Nº favoritos
+					$nombre = $tweet['user']['name'];		// Nombre 
+					$usuario = $tweet['user']['screen_name'];	// Usuario
+					$fecha = strtotime($tweet['created_at']);	// Fecha
+					$tweet_text = $tweet['text'];			// Texto
+					$nRTs = $tweet['retweet_count'];		// Nº RTs					
+					$nFav = $tweet['favorite_count'];		// Nº favoritos
 				}
 												
 				// Formatear fecha
@@ -194,8 +194,8 @@ $settings = array(
 				$tweet_text = preg_replace("/[#]+([A-Za-z0-9-_]+)/", "<a href=\"http://twitter.com/search?q=%23$1\" target=\"_blank\">$0</a>", $tweet_text );
 
 				// Ensamblar html	
-				$twitter_html .= $tweet_open."\n";					//<article>		
-				$twitter_html .= "\t".$tweet_header_open."\n";		//<header>
+				$twitter_html .= $tweet_open."\n";		//<article>		
+				$twitter_html .= "\t".$tweet_header_open."\n";	//<header>
 				if($mostrar_nombre)
 					$twitter_html .= "\t\t".$nombre_open.'<a href="http://twitter.com/'.$usuario.'" target="_blank">'.$nombre.'</a>'.$nombre_close."\n";	//<span class="nombre"><i class="fa fa-caret-right"></i> Nombre</span>
 				if($mostrar_usuario)
@@ -210,9 +210,9 @@ $settings = array(
 					if($mostrar_nFav && $nFav>0)
 						$twitter_html .= "\t\t".$nFav_open.$nFav.$nFav_close."\n";	// Simbolo estrella, número favoritos				
 				}
-				$twitter_html .= "\t".$tweet_header_close."\n";						//</header>
+				$twitter_html .= "\t".$tweet_header_close."\n";	//</header>
 				$twitter_html .= "\t\t".$tweet_text_open.html_entity_decode($tweet_text).$tweet_text_close."\n"; //<p>...tweet...</p>
-				$twitter_html .= $tweet_close."\n";									//</article>	
+				$twitter_html .= $tweet_close."\n";								 //</article>	
 				
 				// Salir del bucle si ya se han mostrado el nº tweets configurado
 				if ($tweet_count >= $tweets_a_mostrar){
