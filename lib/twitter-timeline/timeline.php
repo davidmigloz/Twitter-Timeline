@@ -53,7 +53,7 @@ date_default_timezone_set('Europe/Madrid');
 function mostrarTweets(
 	// Parámetros
 	$screen_name,						// Nombre de usuario (Ej: nombre_2013). Pasar por parámetro
-	$archivo_cache			= './tweets.txt'	// Archivo para cache. (Por defecto: en el dir actual)
+	$archivo_cache			= './tweets.txt',	// Archivo para cache. (Por defecto: en el dir actual)
 	$tweets_a_mostrar		= 6,			// Nº tweets a mostrar
 	$ignorar_respuestas		= false,		// No incluir tweets de respuestra (Los que empiezan por @usuario)
 	$incluir_rts			= true,			// Incluir RTs
