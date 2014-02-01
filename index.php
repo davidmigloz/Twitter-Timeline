@@ -14,8 +14,8 @@
 	</header>
 	<section id="timeline">
 <?php
-include('lib/twitter/timeline.php');
-mostrarTweets('ABI2burgos', './lib/twitter/tweets.txt'); 
+include('lib/twitter-timeline/timeline.php');
+mostrarTweets('ABI2burgos', './lib/twitter-timeline/tweets.txt'); 
 ?>
 	</section>
 </body>

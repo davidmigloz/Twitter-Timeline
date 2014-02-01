@@ -103,7 +103,7 @@ body {
 }
 
 /*****************************************
-  Timeline
+  Twitter Timeline (Personalizar)
  *****************************************/ 
 #timeline {
 	width: 600px;
@@ -121,14 +121,16 @@ body {
 	padding-bottom: 5px;
 }
 
-#timeline .nombre {
+#timeline .nombre,
+#timeline .nombre a,
+#timeline .nombre a:hover {
 	color: #0c304a;
+	text-decoration: none;
 }
 
 #timeline .usuario,
 #timeline .usuario a,
-#timeline .usuario a:hover
-{
+#timeline .usuario a:hover{
 	color: #85a71d;
 	text-decoration: none;
 }
@@ -136,6 +138,13 @@ body {
 #timeline time {
 	color: #f3f3f1;
 	font-size: 0.85em;
+}
+
+#timeline .nRTs,
+#timeline .nFav {
+	float: right;
+	font-size: 0.85em;
+	color: #0c304a;
 }
 
 #timeline p {
