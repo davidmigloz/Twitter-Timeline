@@ -1,7 +1,7 @@
 Twitter-Timeline
 ========================
 
-Muestra facilmente los últimos tweets de un usuario de Twitter mediante PHP y OAuth.
+Muestra facilmente los últimos tweets de un usuario de Twitter mediante PHP y OAuth, haciendo uso de la nueva API 1.1.
 
 Características
 ========================
@@ -20,47 +20,49 @@ Características
 Uso
 ========================
 
-***Demo:** http://davidmiguel.com/proyectos/twitter-timeline/
+**-Demo:** http://davidmiguel.com/proyectos/twitter-timeline/
 
 #### Registrar app ####
 
-Antes de nada tienes que crearte una cuenta de desarrollador y registrar la app/website desde (https://dev.twitter.com). 
+Antes de nada tienes que crearte una cuenta de desarrollador y registrar la app/website desde https://dev.twitter.com. 
 
 Al completar el registro y crear un token de acceso, dispondrás de cuatro claves: **consumer key**, **consumer secret**, **access token** y **access token secret**.
 
 #### Añadir librería ####
 
-Añade la carpeta ```lib/twitter-timeline/``` a tu proyecto. Esta contiene los archivos ```timeline.php``` y ```TwitterAPIExchange.php```.
+Añade la carpeta `lib/twitter-timeline/` a tu proyecto. Esta contiene los archivos `timeline.php` y `TwitterAPIExchange.php`.
 
 #### Añadir claves ####
 
-Edita el archivo ```timeline.php``` introduciendo los tokens de acceso que te han proporcionado.
+Edita el archivo `timeline.php` introduciendo los tokens de acceso que te han proporcionado.
 
 
-```
+```php
 $settings = array(
-  'consumer_key' 				=> "xxxxxxxxxxxxxxxxxxxx",
-	'consumer_secret' 			=> "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-	'oauth_access_token' 		=> "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-	'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",		
+	'consumer_key'				=> "xxxxxxxxxxxxxxxxxxxx",
+	'consumer_secret'			=> "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	'oauth_access_token'		=> "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	'oauth_access_token_secret'	=> "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",		
 );
 ```
 
 #### Añadir estilos predefinidos ####
 
-Añade los estilos CSS predeterminados a tu hoja de estilos. Estos se encuentran en ```css/main.css``` en la sección ```Twitter Timeline```.
+Añade los estilos CSS predeterminados a tu hoja de estilos. Estos se encuentran en `css/main.css` en la sección `Twitter Timeline`.
 
-*El archivo ```main.css``` contiene todos los estilos usados en la demo del proyecto. Los que afectan al timeline son todos los que empiezan por ```#timeline```.
+*El archivo `main.css` contiene todos los estilos usados en la demo del proyecto. Los que afectan al timeline son todos los que empiezan por `#timeline`.
 
 #### Añadir Font Awesome ####
 
-El script necesita Font Awesome para los diferentes iconos que usa.
+El script necesita Font Awesome para los diferentes iconos que utiliza.
 
-Se debe añadir el archivo ```css/font-awesome.min.css``` al proyecto y enlazarlo.
+Se debe añadir el archivo `css/font-awesome.min.css` al proyecto y enlazarlo.
 
-```<link rel="stylesheet" href="css/font-awesome.min.css">```
+```html
+<link rel="stylesheet" href="css/font-awesome.min.css">
+```
 
-Y añadir las tipografías que usa a la carpeta ```fonts```:
+Y añadir las siguiente tipografías en la carpeta `fonts`:
 
 ```
 fonts/FontAwesome.otf
@@ -70,12 +72,12 @@ fonts/fontawesome-webfont.ttf
 fonts/fontawesome-webfont.woff
 ```
 
-*Las otras tipografías incluidas en la carpeta ```fonts``` se usan en la demo.
+*Las otras tipografías incluidas en la carpeta `fonts` se usan en la demo.
 
 	
 #### Configuración ####
 
-En el archivo ```timeline.php``` puedes configurar todas las opciones por defecto disponibles:
+En el archivo `timeline.php` puedes configurar todas las opciones por defecto disponibles:
 
 - Ubicación archivo para caché por defecto
 - Número de tweets a mostrar
@@ -87,17 +89,23 @@ En el archivo ```timeline.php``` puedes configurar todas las opciones por defect
 
 #### Mostrar timeline ####
 
-En el archivo que desees mostrar el timeline, debes incluir el archivo ```timeline.php```:
+En el archivo que desees mostrar el timeline, debes incluir el archivo `timeline.php`.
 
-```include('lib/twitter/timeline.php');```
+```php
+include('lib/twitter/timeline.php');
+```
 
 Y llamar a la función `mostrarTweets` indicando el nombre del usuario a mostrar (sin @):
 
-```mostrarTweets('ABI2burgos');```
+```php
+mostrarTweets('ABI2burgos');
+```
 	
-*Si no pasas más parámetros, se aplicarán los ajustes por defecto. Si se pasan más, se utilizarán esos ajustes. Por ejemplo, si se quiere guardar el archivo cache en otra ubicaación distinta de la por defecto:
+*Si no pasas más parámetros, se aplicarán los ajustes por defecto. Si se pasan más, se utilizarán esos ajustes. Por ejemplo, si se quiere modificar la ubicación del cache:
 
-```mostrarTweets('ABI2burgos', './lib/twitter/tweets.txt');```
+```php
+mostrarTweets('ABI2burgos', './lib/twitter/tweets.txt');
+```
 
 *Se puede llamar a la función tantas veces como se quiera. Lo que permite mostrar timelines de distintos usuarios.
 
@@ -106,7 +114,7 @@ Notas
 
 - Requiere la librería cURL (http://curl.haxx.se/docs/install.html)
 
-  *Problemas con cURL en XAMPP: 
+  *-Problemas con cURL en XAMPP:* 
 	http://stackoverflow.com/questions/18574055/twitter-api-returns-null-on-xampp
 
 - Utiliza Font Awesome para los iconos (http://fontawesome.io)
@@ -116,18 +124,16 @@ Notas
 Créditos
 ========================
 
-Autentificación mediante: twitter-api-php (James Mallisont)
-	http://github.com/j7mbo/twitter-api-php
+- Autentificación mediante: [twitter-api-php](http://github.com/j7mbo/twitter-api-php "twitter-api-php") (James Mallisont)
 	
-Basado en: latest-tweets-php-o-auth (Andrew Biggart)
-	https://github.com/andrewbiggart/latest-tweets-php-o-auth/	
+- Basado en: [latest-tweets-php-o-auth](https://github.com/andrewbiggart/latest-tweets-php-o-auth/ "latest-tweets-php-o-auth")  (Andrew Biggart)
 
 Licencia
 ========================
 
 The MIT License (MIT)
 
-Copyright (c) 2014 David Miguel Lozano
+Copyright © 2014 David Miguel Lozano
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
