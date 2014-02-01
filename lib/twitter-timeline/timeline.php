@@ -122,8 +122,14 @@ function mostrarTweets(
 					  ->buildOauth($url, $requestMethod)
 					  ->performRequest();
 
-		//Decodificar string JSON recibido			  
+		// Decodificar string JSON recibido			  
 		$get_tweets = json_decode($get_tweets, true); 
+		
+		// Comprobar si ha habído algún error, si es así, mostrar error y salir
+		if(array_key_exists('errors', $get_tweets)){
+			echo "<b>Error:</b> ".$get_tweets['errors'][0]['message'];
+			return;
+		}
 				  
 		if (count($get_tweets)) {
 			// Contador tweets
