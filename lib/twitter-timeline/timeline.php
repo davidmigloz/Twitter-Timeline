@@ -87,9 +87,9 @@ function mostrarTweets(
 	// Claves para autentificación (https://dev.twitter.com/)
 $settings = array(
 	'consumer_key' 				=> "xxxxxxxxxxxxxxxxxxxx",
-	'consumer_secret' 			=> "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	'consumer_secret' 			=> "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 	'oauth_access_token' 		=> "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-	'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",		
+	'oauth_access_token_secret' => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 );
 
 	// Periodo de cache
