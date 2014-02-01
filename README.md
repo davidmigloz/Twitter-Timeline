@@ -93,13 +93,21 @@ En el archivo `timeline.php` puedes configurar todas las opciones por defecto di
 
 #### Mostrar timeline ####
 
-En el archivo que desees mostrar el timeline, debes incluir el archivo `timeline.php`.
+En el archivo que desees mostrar el timeline, crear un contenedor con `id="timeline"`. Por ejemplo:
+
+```html
+<section id="timeline">
+  ...
+</section>
+```
+
+Incluir el archivo `timeline.php`.
 
 ```php
 include('lib/twitter/timeline.php');
 ```
 
-Y llamar a la función `mostrarTweets` indicando el nombre del usuario a mostrar (sin @):
+Y llamar a la función `mostrarTweets` indicando el nombre del usuario a mostrar (sin @), dentro del contenedor:
 
 ```php
 mostrarTweets('ABI2burgos');
