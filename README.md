@@ -28,6 +28,8 @@ Antes de nada tienes que crearte una cuenta de desarrollador y registrar la app/
 
 Al completar el registro y crear un token de acceso, dispondrás de cuatro claves: **consumer key**, **consumer secret**, **access token** y **access token secret**.
 
+*El nivel de acceso basta con `read`.
+
 #### Añadir librería ####
 
 Añade la carpeta `lib/twitter-timeline/` a tu proyecto. Esta contiene los archivos `timeline.php` y `TwitterAPIExchange.php`.
