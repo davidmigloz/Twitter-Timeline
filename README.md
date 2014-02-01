@@ -17,6 +17,8 @@ Características
 - Estilos CSS predefinidos y fácilmente personalizables.
 - Permite mostrar varios timelines por separado.
 
+![Captura pantalla](http://davidmiguel.com/proyectos/twitter-timeline/img/twitter-timeline.png "Captura pantalla")
+
 Uso
 ========================
 
