@@ -203,12 +203,12 @@ function mostrarTweets(
 				if($mostrar_fecha)
 					$twitter_html .= "\t\t".$fecha_open.date("Y-m-d",$fecha).$fecha_mid.$fecha_formateada.$fecha_close."\n"; //<time datetime="2014-01-24"><i class="fa fa-clock-o"></i> hace 10h</time>
 				if($rt){
-					$twitter_html .= "\t\t".$tweet_retweeted."\n";	// Simbolo retweet
+					$twitter_html .= "\t\t".$tweet_retweeted."\n";	// Símbolo retweet
 				}else{
 					if($mostrar_nRTs && $nRTs>0)
-						$twitter_html .= "\t\t".$nRTs_open.$nRTs.$nRTs_close."\n";	// Simbolo retweet, número RTs
+						$twitter_html .= "\t\t".$nRTs_open.$nRTs.$nRTs_close."\n";	// Símbolo retweet, número RTs
 					if($mostrar_nFav && $nFav>0)
-						$twitter_html .= "\t\t".$nFav_open.$nFav.$nFav_close."\n";	// Simbolo estrella, número favoritos				
+						$twitter_html .= "\t\t".$nFav_open.$nFav.$nFav_close."\n";	// Símbolo estrella, número favoritos				
 				}
 				$twitter_html .= "\t".$tweet_header_close."\n";	//</header>
 				$twitter_html .= "\t\t".$tweet_text_open.html_entity_decode($tweet_text).$tweet_text_close."\n"; //<p>...tweet...</p>
