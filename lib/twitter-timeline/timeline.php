@@ -227,7 +227,7 @@ function mostrarTweets(
 			}
 
 			//Enlace "más tweets"
-			$twitter_html .= '<br/><a href="http://twitter.com/'.$usuario.'" target="_blank">Más tweets</a>'."\n";
+			$twitter_html .= '<br/><a href="http://twitter.com/'.$screen_name.'" target="_blank">Más tweets</a>'."\n";
 			
 			// Mostrar html
 			echo $twitter_html;
