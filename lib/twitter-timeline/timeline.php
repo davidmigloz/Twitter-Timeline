@@ -122,10 +122,16 @@ function mostrarTweets(
 					  ->buildOauth($url, $requestMethod)
 					  ->performRequest();
 
+		// Comprobar que se han recibido datos
+		if($get_tweets == null){
+			echo "<b>Error:</b> no se ha podido conectar con la API.";
+			return;
+		}
+
 		// Decodificar string JSON recibido			  
 		$get_tweets = json_decode($get_tweets, true); 
 		
-		// Comprobar si ha habído algún error, si es así, mostrar error y salir
+		// Comprobar si la API ha lanzado algún error
 		if(array_key_exists('errors', $get_tweets)){
 			echo "<b>Error:</b> ".$get_tweets['errors'][0]['message'];
 			return;
